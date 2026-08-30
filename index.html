@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gremmo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="gremmo-logo.png">
+    <link rel="shortcut icon" href="gremmo-logo.png">
+    <link rel="apple-touch-icon" href="gremmo-logo.png">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gremmo is a self-breeding goblin colony on Robinhood Chain. Mint a bloodline, hold a share of the colony.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Gremmo">
+  <meta property="og:title" content="Gremmo — the goblins own the colony">
+  <meta property="og:description" content="A self-breeding goblin colony on Robinhood Chain. Every Gremmo NFT is a bloodline and one base share of the colony.">
+  <meta property="og:image" content="gremmo-logo.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Gremmo logo">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gremmo — the goblins own the colony">
+  <meta name="twitter:description" content="A self-breeding goblin colony on Robinhood Chain. Mint a bloodline, hold a share of the colony.">
+  <meta name="twitter:image" content="gremmo-logo.png">
+  <meta name="twitter:image:alt" content="Gremmo logo">
+  
+  </head>
+  <body>
+  
+  <br>
+  <br>
+  
+  
+    <center><h1>the goblins own the colony</h1>
+<style>
+    body {
+    font-size: 14px;
+    background-color: #000;
+    color: #e6e6e6;
+
+    }
+    a { color: #7ab7ff; }
+    h3 { font-size: 15px; margin: 26px 0 8px; letter-spacing: .3px; }
+    code { color: #8fff6a; }
+    .box {
+      text-align: left;
+      display: inline-block;
+      max-width: 720px;
+      width: 92%;
+      background: #0a0a0a;
+      border: 1px solid #222;
+      border-radius: 4px;
+      padding: 14px 16px;
+      margin: 8px 0 4px;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      line-height: 1.55;
+      color: #cfcfcf;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .box .c { color: #6a6a6a; }   /* comment */
+    .box .k { color: #7ab7ff; }   /* keyword  */
+    .box .s { color: #8fff6a; }   /* string   */
+    .ca {
+      display: block; max-width: 420px; width: 76%;
+      background: #0a0a0a; border: 1px solid #222; border-radius: 4px;
+      padding: 10px 14px; font-family: "Courier New", monospace; font-size: 12px;
+      color: #8fff6a; text-align: center; word-break: break-all; margin: 0 auto;
+    }
+    .actions {
+      display: flex; justify-content: center; align-items: center; gap: 10px;
+      flex-wrap: wrap; margin: 22px 0 12px;
+      font-family: "Courier New", monospace; font-size: 12px;
+    }
+    .actions a, .actions button {
+      appearance: none; background: #0a0a0a; color: #cfcfcf;
+      border: 1px solid #333; border-radius: 3px; padding: 8px 14px;
+      font: inherit; text-decoration: none;
+    }
+    .actions a:hover { color: #8fff6a; border-color: #555; }
+    .actions button:not(:disabled):hover { color: #8fff6a; border-color: #555; cursor: pointer; }
+    .actions button:disabled { color: #666; cursor: not-allowed; }
+    .wallet-status {
+      min-height: 16px; margin: 0 0 10px; color: #777;
+      font-family: "Courier New", monospace; font-size: 11px;
+    }
+    .wallet-status.ok { color: #8fff6a; }
+    .wallet-status.error { color: #ff7777; }
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 1000; display: none;
+      align-items: center; justify-content: center; padding: 20px;
+      background: rgba(0, 0, 0, .82);
+    }
+    .modal-backdrop.open { display: flex; }
+    .mint-modal {
+      position: relative; width: min(460px, 94vw); max-height: 90vh; overflow-y: auto;
+      background: #080808; border: 1px solid #333; border-radius: 5px;
+      padding: 22px; text-align: left; font-family: "Courier New", monospace;
+      box-shadow: 0 18px 70px rgba(0, 0, 0, .7);
+    }
+    .mint-modal h2 { margin: 0 34px 8px 0; font-size: 18px; color: #e6e6e6; }
+    .mint-modal p { line-height: 1.55; color: #aaa; }
+    .modal-close {
+      position: absolute; top: 12px; right: 12px; border: 0; background: transparent;
+      color: #777; font: 20px/1 "Courier New", monospace; cursor: pointer;
+    }
+    .modal-close:hover { color: #fff; }
+    .mint-details {
+      margin: 18px 0; border-top: 1px solid #222; border-bottom: 1px solid #222;
+      padding: 12px 0; font-size: 12px;
+    }
+    .mint-row { display: flex; justify-content: space-between; gap: 18px; padding: 5px 0; }
+    .mint-row span:first-child { color: #777; }
+    .mint-row span:last-child { color: #d8d8d8; text-align: right; }
+    .token-note {
+      padding: 12px; margin: 14px 0; border: 1px solid #273322;
+      background: #0b1009; color: #b7d7a9; font-size: 12px; line-height: 1.55;
+    }
+    .mint-submit {
+      width: 100%; padding: 11px 14px; border: 1px solid #333; border-radius: 3px;
+      background: #111; color: #666; font: 12px "Courier New", monospace;
+      cursor: not-allowed;
+    }
+    .mint-footnote { margin: 12px 0 0 !important; font-size: 10px; color: #666 !important; }
+    body.modal-open { overflow: hidden; }
+    </style>
+    <p>that last goblin wave. i was on the side writing the code, not the one grabbing a number. you know the one. i won't spell it out.</p>
+
+    <p>gremmo is a goblin generation system i built. it comes down to one line: every goblin is a pure function of its seed.<br>
+one seed goes in, one genome comes out. palette, eye count, snout, ears, fangs, warts, skull deformation, all of it parameters,<br>then rendered live into procedural svg with zero hand drawing. keep the seed and this exact goblin rebuilds forever. it can't be copied and it can't be forged.</p>
+
+    <p>breeding takes two genomes and recombines them, then adds a layer of inbred mutation. the inbreeding is a constraint i added on purpose.<br>the tighter the gene pool, the wilder the drift, the more likely it grows something off script. a third eye. fangs pointing the wrong way. a caved in skull.<br>the system is deterministic, yet i can't predict its output either. ugly isn't a bug. it's the system working.</p>
+
+    <p>i didn't build this to ship another batch of pictures. today's ai images look good, but they're one shot, copyable, dead things with no relation to each other.<br>
+i wanted a living system, one with bloodlines, heredity, drift. the genome doesn't just decide how a goblin looks. it decides how it talks. same genome, same face, same voice.</p>
+
+    <p>now the colony gets an economy of its own. when a goblin is minted, the nft is not only proof that this seed and bloodline<br>
+    belong to a wallet. it is also one base share in the colony. trading fees flow into a public treasury, the treasury acquires<br>
+    supported tokenized stocks and other assets on robinhood chain, and eligible holders share in what the colony distributes. the more the<br>
+    goblins move through the world, the more value returns to the wallets that keep them.</p>
+
+    <p>the rule stays as simple as the genome: the seed proves the goblin, the nft proves the holder, and robinhood chain proves where<br>
+    the money went. the mint and treasury contracts are still being built; nothing is live and no fixed return is promised yet.</p>
+
+    <p>**v0.1, prototype, refactored at will.</p>
+     <p>****ugly on purpose. malformed goblins and abominations are by design.<BR>
+     ****every goblin is a pure function of its seed.</p>
+
+    <p>last update: 2026-08-29</p>
+    <img src="gremmo-hero.png" width="260" alt="Gremmo">
+
+    <br><br>
+    <div class="actions">
+      <a href="https://x.com" target="_blank" rel="noopener">twitter</a>
+      <button id="open-mint" type="button">mint</button>
+      <button id="connect-wallet" type="button">connect wallet</button>
+    </div>
+    <div id="wallet-status" class="wallet-status" role="status" aria-live="polite"></div>
+    <div class="ca">CA: TBA</div>
+    <p><small>gremmo is built for robinhood chain. the official mint and treasury contracts will be published here after deployment.<br>
+    do not trust addresses posted anywhere else.</small></p>
+
+    <br><br>
+    <!-- ============ other sections (single page) ============ -->
+
+    <h3>the colony treasury</h3>
+    <p>minting a goblin does more than put a face in your wallet. every gremmo nft is a receipt from the colony and a claim on<br>
+    its future distributions. when goblins trade, a share of the protocol fee flows into a transparent colony treasury instead<br>
+    of disappearing into a team wallet. the colony uses that treasury to acquire supported tokenized stocks and other approved<br>
+    assets on robinhood chain. what the colony earns is routed back to eligible wallets still holding the goblins.</p>
+    <div class="box"><span class="c"># the colony's value loop</span>
+
+  <span class="s">mint a goblin</span>  -&gt;  hold the nft  -&gt;  receive a share of distributions
+                              ^
+                              |
+  goblin trades  -&gt;  protocol fee  -&gt;  colony treasury
+                                      |
+                                      +-&gt; tokenized stocks
+                                      +-&gt; holder rewards
+
+  <span class="c">one goblin = one base share. every movement is visible on robinhood chain.</span></div>
+    <p>the first version keeps the rule legible: one goblin carries one base share, calculated from eligible snapshots rather<br>
+    than promises of a fixed return. supported assets, distribution timing, fees, custody and jurisdiction restrictions will<br>
+    be published before activation. until the treasury contracts are deployed and audited, this is the intended mechanism,<br>
+    not a live yield product.</p>
+
+    <br>
+    <h3>why the nft matters</h3>
+    <p>the seed still rebuilds the face, but the nft proves who holds the colony position at a given block. sell the goblin and<br>
+    the future claim moves with it. breed a new goblin and a new lineage enters the colony under the mint rules active at that<br>
+    time. the art, ancestry and economics travel together instead of being split across an image, a database and a points page.</p>
+
+    <h3>how it breeds</h3>
+    <p>every goblin is a genome: a flat, versioned vector of traits, and nothing outside that vector defines the goblin.<br>
+    breeding two of them is one function, <code>recombine(mother, father, seed)</code>, and it runs the same five steps every time.</p>
+    <div class="box"><span class="c"># the breeding pipeline, top to bottom</span>
+
+<span class="s">1. derive</span>    child_seed = hash(mother.seed, father.seed, seed)
+             <span class="c"># one number that fully determines the child</span>
+
+<span class="s">2. inherit</span>   for each locus:  coin(child_seed) ? mother[locus] : father[locus]
+             <span class="c"># discrete traits (eyes, fangs) are picked whole</span>
+
+<span class="s">3. blend</span>     continuous traits (snout, skull...) are averaged, then
+             nudged by a small prng jitter off the midpoint
+
+<span class="s">4. mutate</span>    roll once per locus. odds scale with kinship (see below).
+             a hit pushes the trait off the map: a third eye,
+             a reversed fang, a skull that caves in
+
+<span class="s">5. clamp</span>     force every value back into its legal range, so even
+             a monster is still a valid, renderable goblin</div>
+    <p>every random draw in steps 1 to 4 comes from a prng seeded only by the two parents and the seed. there is no wall clock,<br>
+    no global state, no network. the whole function is pure. same parents, same seed, byte for byte the same child, on any<br>
+    machine, in any year. that is the one rule the entire project is built on, and everything below is a consequence of it.</p>
+
+    <br>
+    <h3>the genome</h3>
+    <p>a goblin serialized. this is the whole thing. the renderer reads it to draw the face; the ai reads it to write the voice.<br>
+    the format is versioned, so an old seed always rebuilds under the rules it was born in, even after the spec moves on.</p>
+    <div class="box"><span class="c"># goblin.json  (schema v1)</span>
+{
+  <span class="s">"v"</span>:         <span class="s">1</span>,               <span class="c"># genome schema version</span>
+  <span class="s">"seed"</span>:      <span class="s">741190</span>,          <span class="c"># the goblin IS this number</span>
+  <span class="s">"parents"</span>:   [<span class="s">118050</span>, <span class="s">339201</span>],  <span class="c"># mother seed, father seed</span>
+  <span class="s">"palette"</span>:   <span class="s">4</span>,               <span class="c"># skin / hue index      0..8</span>
+  <span class="s">"eyes"</span>:      <span class="s">3</span>,               <span class="c"># eye count             1..3  (inbred spike)</span>
+  <span class="s">"eye_size"</span>:  <span class="s">1.24</span>,            <span class="c">#                       0.6..1.8</span>
+  <span class="s">"eye_spread"</span>:<span class="s">0.71</span>,            <span class="c"># how far apart          0.5..1.5</span>
+  <span class="s">"snout"</span>:     <span class="s">0.81</span>,            <span class="c"># nose length           0.4..1.6</span>
+  <span class="s">"ears"</span>:      { <span class="s">"size"</span>: <span class="s">1.1</span>, <span class="s">"droop"</span>: <span class="s">0.7</span> },
+  <span class="s">"fangs"</span>:     <span class="s">2</span>,               <span class="c"># protruding teeth      0..3</span>
+  <span class="s">"warts"</span>:     <span class="s">4</span>,               <span class="c"># wart count            0..6</span>
+  <span class="s">"brow"</span>:      -<span class="s">11</span>,             <span class="c"># brow angle, degrees   -30..30</span>
+  <span class="s">"skull"</span>:     <span class="s">1.22</span>,            <span class="c"># deformation   &gt;1 bulges, &lt;1 caves in</span>
+  <span class="s">"mutations"</span>: [<span class="s">"third_eye"</span>, <span class="s">"reversed_fang"</span>]
+}</div>
+
+    <br>
+    <h3>call the ai</h3>
+    <p>this is how the prototype works today. the mint interface and treasury are not live yet. you clone the repo, bring your own key, and call the<br>
+    model yourself. the genome math is pure and local; it gives you the face for free. the ai is what gives the goblin a soul.<br>
+    it reads the genome and speaks as that exact goblin, names itself, and talks in a voice no other goblin has, because the<br>
+    same numbers that bent its skull also bend how it thinks. no ai call, no soul. just a face waiting for one.</p>
+    <div class="box"><span class="c"># pip install anthropic  &&  export ANTHROPIC_API_KEY=sk-ant-...</span>
+<span class="k">import</span> anthropic
+<span class="k">from</span> gremmo <span class="k">import</span> Genome, recombine   <span class="c"># deterministic, local, no ai</span>
+
+client = anthropic.Anthropic()
+
+<span class="k">def</span> breed(mother, father, seed):
+    child = recombine(mother, father, seed)   <span class="c"># pure function of the seed</span>
+
+    soul = client.messages.create(
+        model=<span class="s">"claude-opus-4-8"</span>,
+        max_tokens=<span class="s">400</span>,
+        thinking={<span class="s">"type"</span>: <span class="s">"adaptive"</span>},
+        system=(
+            <span class="s">"you ARE the goblin this genome describes. "</span>
+            <span class="s">"more eyes, more paranoia. caved skull, slower wits. "</span>
+            <span class="s">"more warts, meaner. speak only in its voice. "</span>
+            <span class="s">"name yourself. stay ugly."</span>
+        ),
+        messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: child.to_json()}],
+    )
+    <span class="k">return</span> child, soul.content[<span class="s">0</span>].text
+
+<span class="c"># same seed in, same goblin out. forever.</span>
+goblin, voice = breed(Genome.load(<span class="s">"mother.json"</span>),
+                      Genome.load(<span class="s">"father.json"</span>), seed=<span class="s">741190</span>)
+<span class="k">print</span>(voice)
+<span class="c"># mekmek. i am Snotgrub. three eyes see three enemies. you are all three.</span></div>
+
+    <br>
+    <h3>bring your own model</h3>
+    <p>the genome is the contract, not the model. gremmo ships tuned against <code>claude-opus-4-8</code>, but the ai side is just:<br>
+    genome in, voice out. point <code>breed()</code> at whatever chat model you can call and the goblins still speak. swap the client,<br>
+    keep the system prompt. run it against a local model with no key at all if you want. the face is always yours because the<br>
+    math is local; the voice is yours because you brought the model. nobody is renting you your own goblin.</p>
+
+    <br>
+    <h3>run it yourself</h3>
+    <p>today, the generative engine is a repo and a key. no account and no permission required. the mint and treasury layer comes next.</p>
+    <div class="box"><span class="c"># three lines to your first goblin</span>
+git clone https://github.com/gremmo/gremmo
+cd gremmo && pip install -e .
+gremmo breed mother.json father.json --seed 741190 --render out.svg
+
+<span class="c"># or from scratch, no parents:</span>
+gremmo spawn --seed 741190 --render out.svg --voice</div>
+
+    <br>
+    <h3>the renderer</h3>
+    <p>the genome does not point at a picture. there is no image file anywhere, no sprite sheet, no stored art. the renderer is<br>
+    pure geometry: it reads the numbers and issues draw calls, one trait at a time, building the goblin as layered svg. eye<br>
+    count decides how many eye groups get placed, skull scales the head ellipse, wart count seeds that many bumps from the<br>
+    same prng, mutations splice in extra passes. because it is math and not assets, the same genome draws the exact same face<br>
+    in a browser, on a server, in a terminal preview. the goblin is not stored anywhere. it is recomputed, identically, on<br>
+    demand, from the number.</p>
+
+    <br>
+    <h3>inbreeding</h3>
+    <p>the colony only ever breeds within itself, so bloodlines fold back on each other fast. the engine measures that with a<br>
+    kinship coefficient: walk both parents' ancestry, count shared ancestors, weight by distance. the closer the pair, the<br>
+    higher the number, and the mutation odds in step 4 scale straight off it. distant strangers breed clean and boring.<br>
+    siblings breed monsters. this is the whole aesthetic engine: a closed gene pool that drifts harder the longer it runs.</p>
+    <div class="box"><span class="c"># mutation odds per locus, by how related the parents are</span>
+
+  unrelated        kinship 0.00      ~4%    <span class="c">// clean, forgettable</span>
+  cousins          kinship 0.06      ~11%
+  half siblings    kinship 0.12      ~19%
+  siblings         kinship 0.25      ~34%
+  self x self      kinship 0.50      ~55%   <span class="c">// abominations</span></div>
+
+    <br>
+    <h3>mutations &amp; rarity</h3>
+    <p>a mutation is a trait shoved past its normal range, or an extra draw call the base genome never had. they are catalogued,<br>
+    not open ended, so a mutation means the same thing on every goblin that carries it. rarity is not assigned by hand. every<br>
+    goblin gets an ugliness score, summed from how far each trait sits from baseline plus its mutation load, and the score<br>
+    alone decides the tier. ugly is not a defect here. ugly is the rarity.</p>
+    <div class="box"><span class="c"># rarity is derived, never granted</span>
+
+  common        ugliness  0..33     the vast, forgettable middle
+  weird         ugliness 34..57     one thing is clearly wrong
+  cursed        ugliness 58..79     several things are wrong at once
+  abomination   ugliness 80..100    should not have been born</div>
+
+    <br>
+    <h3>the colony</h3>
+    <p>the colony is every goblin anyone has ever bred. because a goblin is nothing but a seed plus its two parents, the entire<br>
+    population compresses to a list of lineages that anyone can replay and rebuild bit for bit. no server holds the art, no<br>
+    database holds the truth. the seed is the goblin. hold the seed and you hold the goblin, and no one can take it, dilute it,<br>
+    or fake it. two people on opposite ends of the earth, given the same lineage, rebuild the identical creature down to the<br>
+    last wart. the population is not a collection of files. it is a shared, replayable history that lives in the numbers.</p>
+
+    <br>
+    <h3>roadmap</h3>
+    <p><code>v0.1</code> &nbsp; genome spec, deterministic breeding, svg renderer, ai voice, running locally. &nbsp;<span class="c">// you are here</span><br>
+    <code>next</code> &nbsp; freeze the genome format, launch the robinhood chain mint interface and publish the nft ownership contract.<br>
+    <code>then</code> &nbsp; deploy and audit the colony treasury, fee router, holder snapshots and distribution contracts.<br>
+    <code>after</code> &nbsp; activate supported tokenized-asset purchases where available, with every treasury movement visible on robinhood chain.<br>
+    <code>later</code> &nbsp; a shared family tree, persistent voices and treasury history for every generation of the colony.</p>
+
+    <br>
+    <h3>faq</h3>
+    <p><code>how do i play.</code> &nbsp; today: clone the repo, add your key and run <code>breed()</code>. minting opens after the contracts are ready.<br>
+    <code>which chain.</code> &nbsp; gremmo's nft, mint and colony treasury are being built for robinhood chain.<br>
+    <code>why do i need my own ai.</code> &nbsp; the goblin is generative, not a jpeg. its voice is computed on demand from its genome, by you, not served to you.<br>
+    <code>which model.</code> &nbsp; tuned on <code>claude-opus-4-8</code>, but any chat model works. the genome is the contract; the model is swappable.<br>
+    <code>what does the nft do.</code> &nbsp; it proves ownership of a goblin and is intended to carry one base share of future colony distributions.<br>
+    <code>where do the fees go.</code> &nbsp; into the colony treasury, which is designed to acquire supported tokenized assets and distribute rewards to eligible holders.<br>
+    <code>is the treasury live.</code> &nbsp; not yet. no return is promised. contracts, supported assets, eligibility and regional restrictions come before activation.<br>
+    <code>can two people breed the same goblin.</code> &nbsp; yes. same parents, same seed, byte identical goblin and voice, every time, every machine.<br>
+    <code>why is it so ugly.</code> &nbsp; inbreeding. the gene pool is closed on purpose. ugly is the feature, not the bug.<br>
+    <code>can i sell one.</code> &nbsp; you can sell a seed. whether that means anything is between you and whoever wants it.<br>
+    <code>who made this.</code> &nbsp; the one who was writing the code last time.</p>
+
+    <br>
+    <h3>principles</h3>
+    <p>a goblin is a pure function of its seed.<br>
+    the face is math, the soul is a model call, and both are yours.<br>
+    nothing is stored that cannot be recomputed.<br>
+    the gene pool stays closed. drift is the point.<br>
+    ugly is not a defect. ugly is the rarity.<br>
+    every goblin carries one base share of the colony.<br>
+    the treasury belongs on robinhood chain, where every holder can inspect it.</p>
+
+    <br><br><br>
+    <p>© 2026 gremmo. all goblins are pure functions of their seed.</p>
+
+  <div id="mint-backdrop" class="modal-backdrop" aria-hidden="true">
+    <section class="mint-modal" role="dialog" aria-modal="true" aria-labelledby="mint-title">
+      <button id="close-mint" class="modal-close" type="button" aria-label="close mint window">×</button>
+      <h2 id="mint-title">mint a gremmo</h2>
+      <p>mint a deterministic goblin bloodline and enter the colony. every Gremmo NFT is intended to carry one base share of future colony distributions.</p>
+
+      <div class="token-note"><strong>$GREMMO REQUIRED</strong><br>
+      Gremmo NFTs can only be minted with the $GREMMO token. You will need enough $GREMMO for the mint price and the network fee before confirming.</div>
+
+      <div class="mint-details">
+        <div class="mint-row"><span>network</span><span>Robinhood Chain</span></div>
+        <div class="mint-row"><span>payment token</span><span>$GREMMO</span></div>
+        <div class="mint-row"><span>mint price</span><span>TBA</span></div>
+        <div class="mint-row"><span>quantity</span><span>1 Gremmo NFT</span></div>
+        <div class="mint-row"><span>wallet</span><span id="mint-wallet">not connected</span></div>
+      </div>
+
+      <button class="mint-submit" type="button" disabled>mint contract not live yet</button>
+      <p class="mint-footnote">The official $GREMMO token and mint contract addresses will be published on this site. Never use an address sent by direct message.</p>
+    </section>
+  </div>
+
+  
+    
+  <script>
+    (() => {
+      const button = document.getElementById("connect-wallet");
+      const status = document.getElementById("wallet-status");
+      const openMintButton = document.getElementById("open-mint");
+      const closeMintButton = document.getElementById("close-mint");
+      const mintBackdrop = document.getElementById("mint-backdrop");
+      const mintWallet = document.getElementById("mint-wallet");
+      const disconnectKey = "gremmo.wallet.disconnected";
+      let connectedAddress = "";
+
+      const shortAddress = (address) =>
+        address ? `${address.slice(0, 6)}...${address.slice(-4)}` : "";
+
+      const setStatus = (message, type = "") => {
+        status.textContent = message;
+        status.className = `wallet-status ${type}`.trim();
+      };
+
+      const renderAccount = (accounts) => {
+        if (!accounts || !accounts.length) {
+          connectedAddress = "";
+          mintWallet.textContent = "not connected";
+          button.textContent = "connect wallet";
+          button.removeAttribute("title");
+          setStatus("");
+          return;
+        }
+
+        const address = accounts[0];
+        connectedAddress = address;
+        mintWallet.textContent = shortAddress(address);
+        button.textContent = shortAddress(address);
+        button.title = `${address} — click to disconnect`;
+        setStatus("wallet connected", "ok");
+      };
+
+      const connectWallet = async () => {
+        if (!window.ethereum) {
+          setStatus("no EVM wallet found. install MetaMask or Rabby.", "error");
+          return;
+        }
+
+        button.disabled = true;
+        button.textContent = "connecting...";
+        setStatus("approve the request in your wallet");
+
+        try {
+          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+          localStorage.removeItem(disconnectKey);
+          renderAccount(accounts);
+        } catch (error) {
+          if (error && error.code === 4001) {
+            setStatus("connection request cancelled", "error");
+          } else if (error && error.code === -32002) {
+            setStatus("a wallet request is already waiting for approval", "error");
+          } else {
+            setStatus("wallet connection failed. please try again.", "error");
+          }
+          button.textContent = "connect wallet";
+        } finally {
+          button.disabled = false;
+        }
+      };
+
+      const disconnectWallet = async () => {
+        button.disabled = true;
+        setStatus("disconnecting wallet...");
+
+        try {
+          await window.ethereum?.request({
+            method: "wallet_revokePermissions",
+            params: [{ eth_accounts: {} }]
+          });
+        } catch (_) {
+          // Some EVM wallets do not expose permission revocation to websites.
+        } finally {
+          localStorage.setItem(disconnectKey, "1");
+          renderAccount([]);
+          setStatus("wallet disconnected", "ok");
+          button.disabled = false;
+        }
+      };
+
+      button.addEventListener("click", () => {
+        if (connectedAddress) {
+          disconnectWallet();
+        } else {
+          connectWallet();
+        }
+      });
+
+      const openMint = () => {
+        mintBackdrop.classList.add("open");
+        mintBackdrop.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+        closeMintButton.focus();
+      };
+
+      const closeMint = () => {
+        mintBackdrop.classList.remove("open");
+        mintBackdrop.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        openMintButton.focus();
+      };
+
+      openMintButton.addEventListener("click", openMint);
+      closeMintButton.addEventListener("click", closeMint);
+      mintBackdrop.addEventListener("click", (event) => {
+        if (event.target === mintBackdrop) closeMint();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && mintBackdrop.classList.contains("open")) closeMint();
+      });
+
+      if (window.ethereum) {
+        if (localStorage.getItem(disconnectKey) !== "1") {
+          window.ethereum.request({ method: "eth_accounts" })
+            .then(renderAccount)
+            .catch(() => setStatus("unable to read wallet state", "error"));
+        }
+
+        window.ethereum.on?.("accountsChanged", (accounts) => {
+          if (localStorage.getItem(disconnectKey) === "1") return;
+          renderAccount(accounts);
+        });
+        window.ethereum.on?.("chainChanged", () => {
+          if (localStorage.getItem(disconnectKey) === "1") return;
+          setStatus("network changed", "ok");
+          window.setTimeout(() => {
+            window.ethereum.request({ method: "eth_accounts" }).then(renderAccount).catch(() => {});
+          }, 500);
+        });
+      }
+    })();
+  </script>
+  </body>
+</html>
