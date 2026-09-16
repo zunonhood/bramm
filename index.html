@@ -9,17 +9,17 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Bramm is a self-breeding goblin colony on Arc Chain. Mint a bloodline, hold a share of the colony.">
+  <meta name="description" content="Bramm is a self-breeding goblin colony on Arc Chain. Mint a deterministic bloodline and grow the colony onchain.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Bramm">
   <meta property="og:title" content="Bramm — the goblins own the colony">
-  <meta property="og:description" content="A self-breeding goblin colony on Arc Chain. Every Bramm NFT is a bloodline and one base share of the colony.">
+  <meta property="og:description" content="A self-breeding goblin colony on Arc Chain. Every Bramm NFT is a deterministic bloodline in the colony.">
   <meta property="og:image" content="bramm-logo.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:alt" content="Bramm logo">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Bramm — the goblins own the colony">
-  <meta name="twitter:description" content="A self-breeding goblin colony on Arc Chain. Mint a bloodline, hold a share of the colony.">
+  <meta name="twitter:description" content="A self-breeding goblin colony on Arc Chain. Mint a deterministic bloodline and grow the colony onchain.">
   <meta name="twitter:image" content="bramm-logo.png">
   <meta name="twitter:image:alt" content="Bramm logo">
   
@@ -134,13 +134,12 @@ one seed goes in, one genome comes out. palette, eye count, snout, ears, fangs, 
     <p>i didn't build this to ship another batch of pictures. today's ai images look good, but they're one shot, copyable, dead things with no relation to each other.<br>
 i wanted a living system, one with bloodlines, heredity, drift. the genome doesn't just decide how a goblin looks. it decides how it talks. same genome, same face, same voice.</p>
 
-    <p>now the colony gets an economy of its own. when a goblin is minted, the nft is not only proof that this seed and bloodline<br>
-    belong to a wallet. it is also one base share in the colony. trading fees flow into a public treasury, the treasury acquires<br>
-    supported tokenized stocks and other assets on arc chain, and eligible holders share in what the colony distributes. the more the<br>
-    goblins move through the world, the more value returns to the wallets that keep them.</p>
+    <p>now the colony gets an economy of its own. when a goblin is minted, the nft proves that this seed and bloodline belong to a wallet.<br>
+    activity around the colony can route protocol fees into a public usdc treasury on arc chain. that treasury exists to fund breeding<br>
+    incentives, community bounties, new tools and experiments that make the colony stranger and stronger over time.</p>
 
     <p>the rule stays as simple as the genome: the seed proves the goblin, the nft proves the holder, and arc chain proves where<br>
-    the money went. the mint and treasury contracts are still being built; nothing is live and no fixed return is promised yet.</p>
+    the treasury moves. a goblin carries no equity, dividend or fixed return. the mint and treasury contracts are still being built.</p>
 
     <p>**v0.1, prototype, refactored at will.</p>
      <p>****ugly on purpose. malformed goblins and abominations are by design.<BR>
@@ -164,25 +163,23 @@ i wanted a living system, one with bloodlines, heredity, drift. the genome doesn
     <!-- ============ other sections (single page) ============ -->
 
     <h3>the colony treasury</h3>
-    <p>minting a goblin does more than put a face in your wallet. every bramm nft is a receipt from the colony and a claim on<br>
-    its future distributions. when goblins trade, a share of the protocol fee flows into a transparent colony treasury instead<br>
-    of disappearing into a team wallet. the colony uses that treasury to acquire supported tokenized stocks and other approved<br>
-    assets on arc chain. what the colony earns is routed back to eligible wallets still holding the goblins.</p>
+    <p>minting a goblin puts a deterministic bloodline in your wallet. when goblins trade, a portion of the protocol fee can flow<br>
+    into a transparent usdc treasury on arc chain instead of disappearing into a team wallet. the treasury is designed to fund<br>
+    breeding incentives, community bounties, open-source tools and new experiments for the colony.</p>
     <div class="box"><span class="c"># the colony's value loop</span>
 
-  <span class="s">mint a goblin</span>  -&gt;  hold the nft  -&gt;  receive a share of distributions
-                              ^
-                              |
+  <span class="s">mint a goblin</span>  -&gt;  own a bloodline  -&gt;  breed the next generation
+
   goblin trades  -&gt;  protocol fee  -&gt;  colony treasury
                                       |
-                                      +-&gt; tokenized stocks
-                                      +-&gt; holder rewards
+                                      +-&gt; breeding incentives
+                                      +-&gt; community bounties
+                                      +-&gt; tools + experiments
 
-  <span class="c">one goblin = one base share. every movement is visible on arc chain.</span></div>
-    <p>the first version keeps the rule legible: one goblin carries one base share, calculated from eligible snapshots rather<br>
-    than promises of a fixed return. supported assets, distribution timing, fees, custody and jurisdiction restrictions will<br>
-    be published before activation. until the treasury contracts are deployed and audited, this is the intended mechanism,<br>
-    not a live yield product.</p>
+  <span class="c">one goblin = one deterministic bloodline. every treasury movement is visible on arc chain.</span></div>
+    <p>the first version keeps the rule legible: fee policy and treasury spending stay public onchain. budgets, eligibility and<br>
+    governance rules will be published before activation. until the contracts are deployed and audited, this is an intended<br>
+    ecosystem mechanism, not a live treasury or investment product.</p>
 
     <br>
     <h3>why the nft matters</h3>
@@ -337,8 +334,8 @@ bramm spawn --seed 741190 --render out.svg --voice</div>
     <h3>roadmap</h3>
     <p><code>v0.1</code> &nbsp; genome spec, deterministic breeding, svg renderer, ai voice, running locally. &nbsp;<span class="c">// you are here</span><br>
     <code>next</code> &nbsp; freeze the genome format, launch the arc chain mint interface and publish the nft ownership contract.<br>
-    <code>then</code> &nbsp; deploy and audit the colony treasury, fee router, holder snapshots and distribution contracts.<br>
-    <code>after</code> &nbsp; activate supported tokenized-asset purchases where available, with every treasury movement visible on arc chain.<br>
+    <code>then</code> &nbsp; deploy and audit the colony treasury and fee router.<br>
+    <code>after</code> &nbsp; activate breeding incentives, community bounties and open development grants, all visible on arc chain.<br>
     <code>later</code> &nbsp; a shared family tree, persistent voices and treasury history for every generation of the colony.</p>
 
     <br>
@@ -347,9 +344,9 @@ bramm spawn --seed 741190 --render out.svg --voice</div>
     <code>which chain.</code> &nbsp; bramm's nft, mint and colony treasury are being built for arc chain.<br>
     <code>why do i need my own ai.</code> &nbsp; the goblin is generative, not a jpeg. its voice is computed on demand from its genome, by you, not served to you.<br>
     <code>which model.</code> &nbsp; tuned on <code>claude-opus-4-8</code>, but any chat model works. the genome is the contract; the model is swappable.<br>
-    <code>what does the nft do.</code> &nbsp; it proves ownership of a goblin and is intended to carry one base share of future colony distributions.<br>
-    <code>where do the fees go.</code> &nbsp; into the colony treasury, which is designed to acquire supported tokenized assets and distribute rewards to eligible holders.<br>
-    <code>is the treasury live.</code> &nbsp; not yet. no return is promised. contracts, supported assets, eligibility and regional restrictions come before activation.<br>
+    <code>what does the nft do.</code> &nbsp; it proves ownership of a deterministic goblin bloodline and lets that lineage continue through breeding.<br>
+    <code>where do the fees go.</code> &nbsp; into a public usdc treasury designed to fund breeding incentives, community bounties, tools and experiments.<br>
+    <code>is the treasury live.</code> &nbsp; not yet. a goblin carries no equity, dividend or fixed return. the contracts will be published before activation.<br>
     <code>can two people breed the same goblin.</code> &nbsp; yes. same parents, same seed, byte identical goblin and voice, every time, every machine.<br>
     <code>why is it so ugly.</code> &nbsp; inbreeding. the gene pool is closed on purpose. ugly is the feature, not the bug.<br>
     <code>can i sell one.</code> &nbsp; you can sell a seed. whether that means anything is between you and whoever wants it.<br>
@@ -362,8 +359,8 @@ bramm spawn --seed 741190 --render out.svg --voice</div>
     nothing is stored that cannot be recomputed.<br>
     the gene pool stays closed. drift is the point.<br>
     ugly is not a defect. ugly is the rarity.<br>
-    every goblin carries one base share of the colony.<br>
-    the treasury belongs on arc chain, where every holder can inspect it.</p>
+    every goblin carries one deterministic bloodline.<br>
+    the treasury belongs on arc chain, where anyone can inspect it.</p>
 
     <br><br><br>
     <p>© 2026 bramm. all goblins are pure functions of their seed.</p>
@@ -372,10 +369,10 @@ bramm spawn --seed 741190 --render out.svg --voice</div>
     <section class="mint-modal" role="dialog" aria-modal="true" aria-labelledby="mint-title">
       <button id="close-mint" class="modal-close" type="button" aria-label="close mint window">×</button>
       <h2 id="mint-title">mint a bramm</h2>
-      <p>mint a deterministic goblin bloodline and enter the colony. every Bramm NFT is intended to carry one base share of future colony distributions.</p>
+      <p>mint a deterministic goblin bloodline and enter the colony. each Bramm NFT proves ownership of one reproducible lineage.</p>
 
       <div class="token-note"><strong>$BRAMM REQUIRED</strong><br>
-      Bramm NFTs can only be minted with the $BRAMM token. You will need enough $BRAMM for the mint price and the network fee before confirming.</div>
+      Bramm NFTs can only be minted with the $BRAMM token. You will need enough $BRAMM for the mint price and a small amount of USDC for the Arc network fee.</div>
 
       <div class="mint-details">
         <div class="mint-row"><span>network</span><span>Arc Chain</span></div>
