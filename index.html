@@ -151,7 +151,7 @@ i wanted a living system, one with bloodlines, heredity, drift. the genome doesn
 
     <br><br>
     <div class="actions">
-      <a href="https://x.com/Brammhood" target="_blank" rel="noopener">twitter</a>
+      <a href="https://x.com/brammarclab" target="_blank" rel="noopener">twitter</a>
       <button id="open-mint" type="button">mint</button>
       <button id="connect-wallet" type="button">connect wallet</button>
     </div>
@@ -401,7 +401,15 @@ bramm spawn --seed 741190 --render out.svg --voice</div>
       const mintBackdrop = document.getElementById("mint-backdrop");
       const mintWallet = document.getElementById("mint-wallet");
       const disconnectKey = "bramm.wallet.disconnected";
+      const arcChain = {
+        chainId: "0x13B2",
+        chainName: "Arc",
+        nativeCurrency: { name: "USDC", symbol: "USDC", decimals: 18 },
+        rpcUrls: ["https://rpc.mainnet.arc.io"],
+        blockExplorerUrls: ["https://explorer.arc.io"]
+      };
       let connectedAddress = "";
+      let connectedChainId = "";
 
       const shortAddress = (address) =>
         address ? `${address.slice(0, 6)}...${address.slice(-4)}` : "";
@@ -426,7 +434,33 @@ bramm spawn --seed 741190 --render out.svg --voice</div>
         mintWallet.textContent = shortAddress(address);
         button.textContent = shortAddress(address);
         button.title = `${address} — click to disconnect`;
-        setStatus("wallet connected", "ok");
+        if (connectedChainId.toLowerCase() === arcChain.chainId.toLowerCase()) {
+          setStatus("wallet connected on arc", "ok");
+        } else {
+          setStatus("switch to arc to continue", "error");
+        }
+      };
+
+      const ensureArcChain = async () => {
+        const currentChainId = await window.ethereum.request({ method: "eth_chainId" });
+        if (currentChainId.toLowerCase() === arcChain.chainId.toLowerCase()) {
+          connectedChainId = currentChainId;
+          return;
+        }
+        setStatus("switching wallet to arc...");
+        try {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: arcChain.chainId }]
+          });
+        } catch (error) {
+          if (!error || error.code !== 4902) throw error;
+          await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: [arcChain]
+          });
+        }
+        connectedChainId = arcChain.chainId;
       };
 
       const connectWallet = async () => {
@@ -441,6 +475,7 @@ bramm spawn --seed 741190 --render out.svg --voice</div>
 
         try {
           const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+          await ensureArcChain();
           localStorage.removeItem(disconnectKey);
           renderAccount(accounts);
         } catch (error) {
@@ -509,8 +544,14 @@ bramm spawn --seed 741190 --render out.svg --voice</div>
 
       if (window.ethereum) {
         if (localStorage.getItem(disconnectKey) !== "1") {
-          window.ethereum.request({ method: "eth_accounts" })
-            .then(renderAccount)
+          Promise.all([
+            window.ethereum.request({ method: "eth_accounts" }),
+            window.ethereum.request({ method: "eth_chainId" })
+          ])
+            .then(([accounts, chainId]) => {
+              connectedChainId = chainId;
+              renderAccount(accounts);
+            })
             .catch(() => setStatus("unable to read wallet state", "error"));
         }
 
@@ -518,9 +559,9 @@ bramm spawn --seed 741190 --render out.svg --voice</div>
           if (localStorage.getItem(disconnectKey) === "1") return;
           renderAccount(accounts);
         });
-        window.ethereum.on?.("chainChanged", () => {
+        window.ethereum.on?.("chainChanged", (chainId) => {
           if (localStorage.getItem(disconnectKey) === "1") return;
-          setStatus("network changed", "ok");
+          connectedChainId = chainId;
           window.setTimeout(() => {
             window.ethereum.request({ method: "eth_accounts" }).then(renderAccount).catch(() => {});
           }, 500);
